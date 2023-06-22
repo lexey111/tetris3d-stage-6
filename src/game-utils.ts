@@ -60,17 +60,12 @@ export function fallDown(field) {
         const filled = line.filter(cell => cell === 2).length === line.length;
 
         if (filled) {
-            line.forEach(cell => cell = 3);
-            for (let y = rowIdx; y < 20; y++) {
-                for (let x = 0; x < field[y].length; x++) {
-                    if (field[y][x] === 1) {
-                        field[y][x] = 3;
-                        hasToRemove = true;
-                    }
-                }
+            for (let x = 0; x < field[rowIdx].length; x++) {
+                field[rowIdx][x] = 3;
             }
         }
     }
+
     return {
         finished,
         stopRow,
@@ -82,18 +77,18 @@ export function removeFilledLines(field) {
     let count = 0;
     for (let rowIdx = 0; rowIdx < 20; rowIdx++) {
         const line = field[rowIdx];
-        const filled = line.filter(cell => cell === 2).length === line.length;
+        const filled = line.filter(cell => cell === 3).length === line.length;
 
         if (filled) {
-            field[rowIdx] = new Array(line.length).fill(undefined);
+            field[rowIdx] = new Array(line.length).fill(0);
             count++;
 
             // move all the rows above down 1 cell
             for (let i = rowIdx + 1; i < 20; i++) {
                 for (let j = 0; j < line.length; j++) {
                     if (field[i][j] === 2) {
-                        field[i - 1][j] = { ...field[i][j] };
-                        field[i][j] = undefined;
+                        field[i - 1][j] = field[i][j];
+                        field[i][j] = 0;
                     }
                 }
             }
