@@ -7,4 +7,4 @@
 3. `npm run dev`
 
 
-Read [Medium article](https://medium.com/@lexeykoshkin/creating-a-3d-tetris-game-for-dummies-like-me-vii) for details.
+Read [Medium article](https://lexeykoshkin.medium.com/creating-a-3d-tetris-game-for-dummies-like-me-vii-14d5900bf205) for details.
